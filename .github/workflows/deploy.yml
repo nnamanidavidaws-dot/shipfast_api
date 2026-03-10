@@ -29,7 +29,7 @@ jobs:
 
       - name: Run container tests
         run: |
-          docker run --rm --user root shipfast:${{ github.sha }} sh -c "pip install pytest && python -m pytest tests/ -v"
+          docker run --rm --user root shipfast:${{ github.sha }} sh -c "/venv/bin/pip install pytest && /venv/bin/python -m pytest tests/ -v"
 
       - name: Push to ECR
         run: |
