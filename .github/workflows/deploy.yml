@@ -30,7 +30,7 @@ jobs:
       - name: Run tests
         run: |
           pip install pytest httpx fastapi sqlalchemy psycopg2-binary boto3 pydantic python-dotenv pyyaml
-          python -m pytest tests/ -v
+          python -m pytest test/ -v
 
       - name: Push to ECR
         run: |
