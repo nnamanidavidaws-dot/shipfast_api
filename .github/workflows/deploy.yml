@@ -28,6 +28,8 @@ jobs:
           docker build -t shipfast:${{ github.sha }} .
 
       - name: Run tests
+        env:
+          DATABASE_URL: "sqlite:///./test.db"
         run: |
           pip install pytest httpx fastapi sqlalchemy psycopg2-binary boto3 pydantic python-dotenv pyyaml
           python -m pytest test/ -v
