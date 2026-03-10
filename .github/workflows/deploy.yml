@@ -29,7 +29,7 @@ jobs:
 
       - name: Run container tests
         run: |
-          docker run --rm shipfast:${{ github.sha }} python -m pytest tests/ -v
+          docker run --rm shipfast:${{ github.sha }} sh -c "pip install pytest && python -m pytest tests/ -v"
 
       - name: Push to ECR
         run: |
@@ -54,7 +54,6 @@ jobs:
           aws ecs update-service \
             --cluster shipfast-cluster \
             --service shipfast-service \
-            --image-id ${{ secrets.ECR_REGISTRY }}/shipfast/fastapi:${{ github.sha }} \
             --force-new-deployment
 
       - name: Wait for deployment to stabilise
