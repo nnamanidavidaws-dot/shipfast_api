@@ -49,19 +49,7 @@ pip install -r requirements.txt pytest httpx
 pytest -v
 ```
 
-## Secrets Manager (Production)
 
-Set `DB_SECRET_NAME` to your AWS secret name.  
-The secret must be a JSON object:
 
-```json
-{
-  "host":     "your-rds-endpoint",
-  "port":     5432,
-  "dbname":   "catalogue",
-  "username": "shipfast",
-  "password": "supersecret"
-}
-```
 
 The app fetches credentials at startup — **no passwords in env vars or images**.
