@@ -30,8 +30,8 @@ RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 WORKDIR /app
 
-# Only the runtime postgres C lib — no compiler
-RUN apk add --no-cache libpq
+# Runtime libs including curl for health checks
+RUN apk add --no-cache libpq curl
 
 # Copy the pre-built venv from builder — nothing else
 COPY --from=builder /build/venv /venv
